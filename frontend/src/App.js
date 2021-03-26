@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
 import { Container } from 'react-bootstrap'
+import HomeScreen from './Screens/HomeScreen'
 
 
 const App = () => {
@@ -11,7 +12,7 @@ const App = () => {
       <Header />
       <main>
         <Container>
-          <h1>Welcome to E-Pasal</h1>
+          <HomeScreen />
         </Container>
       </main>
       <Footer />
