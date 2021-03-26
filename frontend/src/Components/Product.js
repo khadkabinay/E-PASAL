@@ -5,7 +5,10 @@ const Product = (props) => {
     return (
         <>
         <Card>
-            {props.product.name}
+            <Card.Img varient='top' src={props.product.image}/>
+            <Card.Title>{props.product.name}</Card.Title>
+            <Card.Text>{props.product.rating} from {props.product.numReviews} reviews</Card.Text>
+            <Card.Text>{props.product.price}</Card.Text>
         </Card>
         </>
     )
