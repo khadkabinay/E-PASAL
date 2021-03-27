@@ -5,7 +5,7 @@ import Rating from './Rating'
 const Product = (props) => {
     return (
         <>
-        <Card>
+        <Card className='my-3 p-3'>
             <Card.Img varient='top' src={props.product.image}/>
             <Card.Title>{props.product.name}</Card.Title>
             <Card.Text>
@@ -14,7 +14,7 @@ const Product = (props) => {
                 text={`${props.product.numReviews} reviews`}
                 />
             </Card.Text>
-            <Card.Text>{props.product.price}</Card.Text>
+            <Card.Text as='h4' >{props.product.price}</Card.Text>
         </Card>
         </>
     )
