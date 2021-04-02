@@ -1,11 +1,11 @@
-const  mongoose  = require('mongoose')
+const  mongoose = require('mongoose')
 const  dotenv = require('dotenv')
 const  users = require('./data/users')
 const  products = require('./data/products')
 const  User  = require('./models/userModel')
 const  Product = require ('./models/productModel')
 const  Order  = require('./models/orderModel')
-const  connectDB = require('./c)onfig/db')
+const  connectDB = require('./config/db')
 
 dotenv.config()
 connectDB()
@@ -47,8 +47,9 @@ const destroyData = async () => {
     }
 }
 
-if(process.argv(2) === '-d'){
+if(process.argv[2] === '-d'){
     destroyData()
 }else{
     importData()
 }
+

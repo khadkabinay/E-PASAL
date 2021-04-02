@@ -1,4 +1,4 @@
-import bcrypt from 'bcryptjs'
+const bcrypt = require('bcryptjs')
 const users = [
     {
         name: 'Binu Bk',
@@ -15,7 +15,7 @@ const users = [
         name: 'sonu G',
         email: 'sonu@example.com',
         password: bcrypt.hashSync('234567', 10),
-    },
+    }
 
 ]
 
