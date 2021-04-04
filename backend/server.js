@@ -14,7 +14,7 @@ app.get('/', (req, res) =>{
 
 
 app.use('/api/products', productRoutes)
-app.use(notFound)
+// app.use(notFound)
 
 
 app.listen(PORT , console.log(`Server running in ${process.env.NODE_ENV} on port ${PORT}`))
