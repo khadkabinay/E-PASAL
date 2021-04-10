@@ -1,31 +1,24 @@
-import React, { useState , useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch , useSelector } from 'react-redux'
+import { listProductDetails } from '../actions/productAction'
 import Rating from '../Components/Rating'
 import { Link } from 'react-router-dom'
 import { Container, Card, Image, Col, Row, Button, ListGroup, ListGroupItem  } from 'react-bootstrap'
-import axios from 'axios'
 
 const ProductScreen = ({ match }) => {
-    const [ product , setProduct ] = useState({})
+    const dispatch = useDispatch()
+    
+    const productDetails = useSelector(state => state.productDetails)
+    const { loading, error, product } = productDetails
 
     useEffect(() => {
-        const fetchProduct = async () => {
-            const { data } = await axios.get(`/api/products/${match.params.id}`)
-                setProduct(data)
-                
-            
+        dispatch(listProductDetails(match.params.id))
+  
+    }, [dispatch, match])
 
-        }
-
-        fetchProduct()
-    }, [match])
-
-
-
-    // const product = products.find(p => p._id === match.params.id)
     return (
         <div>
-        <Container className='pt-3'>
-
+            {loading ? <h1>loading</h1> : <Container className='pt-3'>
             <Image src={product.image} />
             <Col>
                 <Button><Link to='/'>Go Back</Link></Button>
@@ -40,6 +33,7 @@ const ProductScreen = ({ match }) => {
             <Button disabled={product.countInStock === 0}><Link to='/' >Add To Cart</Link></Button>
             </ListGroup>
         </Container>
+    }
         </div>
     )
 }
