@@ -7,8 +7,8 @@ const Product = (props) => {
     return (
         <>
         <Card className='my-3 p-3'>
-            <Link to={`/products/${props.product._id}`}><Card.Img varient='top' src={props.product.image}/></Link>
-            <Link to={`/products/${props.product._id}`}><Card.Title>{props.product.name}</Card.Title></Link>
+            <Link to={`/product/${props.product._id}`}><Card.Img varient='top' src={props.product.image}/></Link>
+            <Link to={`/product/${props.product._id}`}><Card.Title>{props.product.name}</Card.Title></Link>
             <Card.Text>
                 <Rating 
                 value={props.product.rating}
