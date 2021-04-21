@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch , useSelector } from 'react-redux'
 import { addToCart } from '../actions/cartActions'
 import { Link } from 'react-router-dom'
+import Message  from '../Components/Message'
 
 const CartScreen = ({ match, location, history }) => {
     const productId = match.params.id
@@ -21,7 +22,12 @@ const CartScreen = ({ match, location, history }) => {
 
 
     return (
-        <div>Cart</div>
+        <>
+        <h1>Shopping Cart</h1>
+        {cartItems.length === 0 ? (<Message> Your cart is empty</Message>): 
+            null
+        }
+        </>
     )
 }
 
