@@ -3,5 +3,6 @@ main {
 }
 
 .cartItem {
-    padding-bottom: 10px;
+    background-color: #ffe;
+    padding: 15px;
 }
