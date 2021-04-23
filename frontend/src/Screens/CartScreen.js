@@ -25,6 +25,10 @@ const CartScreen = ({ match, location, history }) => {
         console.log('item removed')
     )
 
+    const checkoutHandler = () => (
+        history.push(`/login?redirect=shipping`)
+    )
+
 
     return (
         <>
@@ -56,6 +60,7 @@ const CartScreen = ({ match, location, history }) => {
                     <ListGroup>
                         <ListGroupItem><h3>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty , 0)}) items</h3></ListGroupItem>
                         <ListGroupItem><p>${cartItems.reduce((acc, item) => acc + item.qty * item.price , 0)}</p></ListGroupItem>
+                        <Button type='button' onClick={checkoutHandler}>Proceed to checkout</Button>
                     </ListGroup>
                 </Card>
                 </Col>
