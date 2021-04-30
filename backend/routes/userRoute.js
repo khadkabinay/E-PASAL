@@ -1,10 +1,10 @@
-const express = require('express')
-const router = express.Router()
-const asyncHandler = require('express-async-handler')
-const Product = require('../models/productModel')
-const { authUser } = require('../controllers/userController')
+const express = require("express");
+const router = express.Router();
+const asyncHandler = require("express-async-handler");
+const Product = require("../models/productModel");
+const { authUser, getUserProfile } = require("../controllers/userController");
 
+router.post("/login", authUser);
+router.get("/profile", getUserProfile);
 
-router.post('/login', authUser)
-
-module.exports = router
+module.exports = router;
