@@ -26,3 +26,7 @@ const protectRoute = asyncHandler(async (req, res, next) => {
     throw new Error("Not authorized , no token created");
   }
 });
+
+module.exports = {
+  protectRoute,
+};

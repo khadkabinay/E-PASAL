@@ -3,9 +3,9 @@ const router = express.Router();
 const asyncHandler = require("express-async-handler");
 const Product = require("../models/productModel");
 const { authUser, getUserProfile } = require("../controllers/userController");
-const protectRoute = require("../middleware/authMiddleware");
+const { protectRoute } = require("../middleware/authMiddleware");
 
 router.post("/login", authUser);
-router.get("/profile", protectRoute, getUserProfile);
+router.route("/profile").get(protectRoute, getUserProfile);
 
 module.exports = router;
