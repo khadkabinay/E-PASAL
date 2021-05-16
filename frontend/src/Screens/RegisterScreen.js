@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { register } from "../actions/userAction";
 import FormContainer from "../Components/FormContainer";
 
-const LoginScreen = ({ location, history }) => {
+const RegisterScreen = ({ location, history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -63,7 +63,7 @@ const LoginScreen = ({ location, history }) => {
         <Form.Group controlId="confirmPassword">
           <Form.Label>confirmPassword</Form.Label>
           <Form.Control
-            type="confirmPassword"
+            type="password"
             placeholder="Enter confirmPassword"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
@@ -85,4 +85,4 @@ const LoginScreen = ({ location, history }) => {
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;
