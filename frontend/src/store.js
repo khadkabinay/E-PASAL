@@ -10,6 +10,7 @@ import {
   userLoginReducer,
   userRegisterReducer,
   userDetailsReducer,
+  UpdateProfileReducer,
 } from "./reducers/userReducer";
 
 //Conbines all the reducers
@@ -20,6 +21,7 @@ const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
+  updateProfile: UpdateProfileReducer,
 });
 
 //retrieves data from localStorage
