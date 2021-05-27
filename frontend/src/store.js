@@ -10,7 +10,7 @@ import {
   userLoginReducer,
   userRegisterReducer,
   userDetailsReducer,
-  UpdateProfileReducer,
+  updateProfileReducer,
 } from "./reducers/userReducer";
 
 //Conbines all the reducers
@@ -21,7 +21,7 @@ const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
-  updateProfile: UpdateProfileReducer,
+  updateProfile: updateProfileReducer,
 });
 
 //retrieves data from localStorage
@@ -33,9 +33,16 @@ const userInfoFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
   : null;
 
+const shippingAddressFromStorage = localStorage.getItem("shippingAddress")
+  ? JSON.parse(localStorage.getItem("shippingAddress"))
+  : {};
+
 // initializes the state
 const initialState = {
-  cart: { cartItems: cartItemsFromStorage },
+  cart: {
+    cartItems: cartItemsFromStorage,
+    shippingAddress: shippingAddressFromStorage,
+  },
   userLogin: { userInfo: userInfoFromStorage },
 };
 
