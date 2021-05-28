@@ -31,7 +31,7 @@ const CartScreen = ({ match, location, history }) => {
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
     //makes a refresh and redirects to /cart
-    history.replace("/cart");
+    // history.replace("/cart");
   };
 
   const checkoutHandler = () => history.push(`/login?redirect=shipping`);
@@ -72,7 +72,7 @@ const CartScreen = ({ match, location, history }) => {
                 <Col md={2}>
                   <Button
                     type="button"
-                    onClick={() => removeFromCartHandler(item.product)}
+                    onClick={() => removeFromCartHandler(item.productId)}
                   >
                     <i className="fas fa-trash"></i>
                   </Button>
