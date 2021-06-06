@@ -4,7 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import CheckoutSteps from "../Components/CheckoutSteps";
 
 const PlaceOrderScreen = () => {
-  return <div>PlaceOrderScreen</div>;
+  return (
+    <>
+      <CheckoutSteps step1 step2 step3 step4 />
+    </>
+  );
 };
 
 export default PlaceOrderScreen;
