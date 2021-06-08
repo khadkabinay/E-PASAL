@@ -64,6 +64,42 @@ const PlaceOrderScreen = () => {
             </ListGroup.Item>
           </ListGroup>
         </Col>
+        <Col md={4}>
+          <Card>
+            <ListGroup variant="flush">
+              <ListGroup.Item>
+                <h2>Order Summary</h2>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Items</Col>
+                  <Col>$</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Shipping</Col>
+                  <Col>$</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Tax</Col>
+                  <Col>$</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Total</Col>
+                  <Col>$</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Button className="btn-block">PLACE ORDER</Button>
+              </ListGroup.Item>
+            </ListGroup>
+          </Card>
+        </Col>
       </Row>
     </>
   );
