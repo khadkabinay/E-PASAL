@@ -6,6 +6,7 @@ import CheckoutSteps from "../Components/CheckoutSteps";
 
 const PlaceOrderScreen = () => {
   const cart = useSelector((state) => state.cart);
+  console.log(cart.cartItems);
 
   // itemsPrice
   cart.itemsPrice = cart.cartItems.reduce(
