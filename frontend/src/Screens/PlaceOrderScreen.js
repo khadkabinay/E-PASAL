@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Row,
-  Col,
-  ListGroup,
-  ListGroupItem,
-  Image,
-  Card,
-} from "react-bootstrap";
+import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import CheckoutSteps from "../Components/CheckoutSteps";
 
 const PlaceOrderScreen = () => {
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
+
+  cart.itemsPrice = cart.cartItems.reduce(
+    (acc, item) => acc + item.price * item.qty,
+    0
+  );
+
+  cart.shippingPrice = cart.itemsPrice > 200 ? 0 : 50;
+
+  const placeOrderHandler = () => {
+    console.log("place an order");
+  };
   return (
     <>
       <CheckoutSteps step1 step2 step3 step4 />
@@ -73,29 +75,36 @@ const PlaceOrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>$</Col>
+                  <Col>${cart.itemsPrice.toFixed(2)}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>$</Col>
+                  <Col>${cart.shippingPrice.toFixed(2)}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>$</Col>
+                  <Col>${cart.taxPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
-                  <Col>$</Col>
+                  <Col>${cart.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
-                <Button className="btn-block">PLACE ORDER</Button>
+                <Button
+                  className="btn-block"
+                  type="button"
+                  disabled={cart.cartItems.length === 0}
+                  onClick={placeOrderHandler}
+                >
+                  PLACE ORDER
+                </Button>
               </ListGroup.Item>
             </ListGroup>
           </Card>
