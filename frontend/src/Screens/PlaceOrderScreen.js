@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
+import {
+  Button,
+  Row,
+  Col,
+  ListGroup,
+  ListGroupItem,
+  Image,
+  Card,
+} from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import CheckoutSteps from "../Components/CheckoutSteps";
 
@@ -13,8 +22,40 @@ const PlaceOrderScreen = () => {
         <Col md={8}>
           <ListGroup variant="flush">
             <ListGroup.Item>
+              <h3>Shipping</h3>
               {cart.shippingAddress.address}, {cart.shippingAddress.city},
               {cart.shippingAddress.postalCode}, {cart.shippingAddress.country}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <h3>Payment Method</h3>
+              <strong>Method: </strong>
+              {cart.paymentMethod}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <h3>Order Items</h3>
+              {cart.cartItems.length === 0 ? (
+                <h2>Your cart is Empty</h2>
+              ) : (
+                <ListGroup variant="flush">
+                  {cart.cartItems.map((item, index) => (
+                    <ListGroup.Item key={index}>
+                      <Row>
+                        <Col md={1}>
+                          <Image src={item.image} alt={item.name} />
+                        </Col>
+                        <Col>
+                          <Link to={`/product/${item.product}`}>
+                            {item.name}
+                          </Link>
+                        </Col>
+                        <Col md={4}>
+                          {item.qty} X ${item.price} = ${item.qty * item.price}
+                        </Col>
+                      </Row>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              )}
             </ListGroup.Item>
           </ListGroup>
         </Col>
