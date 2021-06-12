@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Message";
+import Message from "../Components/Message";
 import Loader from "../Components/Loader";
 import { getOrderDetails } from "../actions/orderActions";
 
@@ -11,6 +11,11 @@ const OrderScreen = ({ match }) => {
   const dispatch = useDispatch();
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
+
+  order.itemsPrice = order.orderItems.reduce(
+    (acc, item) => acc + item.price * item.qty,
+    0
+  );
 
   useEffect(() => {
     dispatch(getOrderDetails(orderId));
@@ -28,6 +33,14 @@ const OrderScreen = ({ match }) => {
           <ListGroup variant="flush">
             <ListGroup.Item>
               <h3>Shipping</h3>
+              <p>
+                <strong>Name: </strong>
+                {order.user.name}
+              </p>
+              <p>
+                <strong>Email: </strong>
+                <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
+              </p>
               {order.shippingAddress.address}, {order.shippingAddress.city},
               {order.shippingAddress.postalCode},{" "}
               {order.shippingAddress.country}
