@@ -12,10 +12,12 @@ const OrderScreen = ({ match }) => {
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
 
-  order.itemsPrice = order.orderItems.reduce(
-    (acc, item) => acc + item.price * item.qty,
-    0
-  );
+  if (!loading) {
+    order.itemsPrice = order.orderItems.reduce(
+      (acc, item) => acc + item.price * item.qty,
+      0
+    );
+  }
 
   useEffect(() => {
     dispatch(getOrderDetails(orderId));
@@ -47,8 +49,15 @@ const OrderScreen = ({ match }) => {
             </ListGroup.Item>
             <ListGroup.Item>
               <h3>Payment Method</h3>
-              <strong>Method: </strong>
-              {order.paymentMethod}
+              <p>
+                <strong>Method: </strong>
+                {order.paymentMethod}
+              </p>
+              {order.isPaid ? (
+                <Message variant="success">Paid on {order.PaidAt}</Message>
+              ) : (
+                <Button variant="danger">Not Paid</Button>
+              )}
             </ListGroup.Item>
             <ListGroup.Item>
               <h3>Order Items</h3>
