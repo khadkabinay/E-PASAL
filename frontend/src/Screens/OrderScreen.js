@@ -20,8 +20,10 @@ const OrderScreen = ({ match }) => {
   }
 
   useEffect(() => {
-    dispatch(getOrderDetails(orderId));
-  }, []);
+    if (!order || order._id !== orderId) {
+      dispatch(getOrderDetails(orderId));
+    }
+  }, [order, orderId]);
 
   return loading ? (
     <Loader />
@@ -43,9 +45,19 @@ const OrderScreen = ({ match }) => {
                 <strong>Email: </strong>
                 <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
               </p>
-              {order.shippingAddress.address}, {order.shippingAddress.city},
-              {order.shippingAddress.postalCode},{" "}
-              {order.shippingAddress.country}
+              <p>
+                {order.shippingAddress.address}, {order.shippingAddress.city},
+                {order.shippingAddress.postalCode},{" "}
+                {order.shippingAddress.country}
+              </p>
+              {order.isDelivered ? (
+                <Message variant="success">
+                  {" "}
+                  Delivered on {order.deliveredAt}
+                </Message>
+              ) : (
+                <Button variant="danger">Not Delivered</Button>
+              )}
             </ListGroup.Item>
             <ListGroup.Item>
               <h3>Payment Method</h3>
