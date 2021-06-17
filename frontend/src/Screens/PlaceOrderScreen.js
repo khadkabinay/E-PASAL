@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +8,6 @@ import { createOrder } from "../actions/orderActions";
 const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
 
   // itemsPrice
   cart.itemsPrice = cart.cartItems.reduce(
