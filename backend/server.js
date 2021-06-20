@@ -20,6 +20,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 
 app.get("/api/config/paypal", (req, res) => {
+  console.log(process.env.PAYPAL_CLIENT_ID);
   res.send(process.env.PAYPAL_CLIENT_ID);
 });
 
