@@ -11,8 +11,12 @@ const OrderScreen = ({ match }) => {
   const orderId = match.params.id;
   const [sdkReady, setSdkReady] = useState(false);
   const dispatch = useDispatch();
+
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
+
+  const orderPay = useSelector((state) => state.orderPay);
+  const { loading: loadingPay, success: successPay } = orderPay;
 
   if (!loading) {
     order.itemsPrice = order.orderItems.reduce(
@@ -34,12 +38,18 @@ const OrderScreen = ({ match }) => {
       document.body.appendChild(script);
     };
 
-    addPaypalScript();
-
-    if (!order || order._id !== orderId) {
-      dispatch(getOrderDetails(orderId));
+    if (!order || successPay) {
+      if (!order || order._id !== orderId) {
+        dispatch(getOrderDetails(orderId));
+      }
+    } else if (!order.isPaid) {
+      if (!window.paypal) {
+        addPaypalScript();
+      } else {
+        setSdkReady(true);
+      }
     }
-  }, [dispatch, order, orderId]);
+  }, [dispatch, order, orderId, successPay]);
 
   return loading ? (
     <Loader />
