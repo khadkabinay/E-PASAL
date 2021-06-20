@@ -21,6 +21,12 @@ const OrderScreen = ({ match }) => {
   }
 
   useEffect(() => {
+    const addPaypalScript = async () => {
+      const { data: clientId } = await axios.get("/api/config/paypal");
+    };
+
+    addPaypalScript();
+
     if (!order || order._id !== orderId) {
       dispatch(getOrderDetails(orderId));
     }
