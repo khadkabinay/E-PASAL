@@ -9,6 +9,6 @@ const { protectRoute } = require("../middleware/authMiddleware");
 
 router.route("/").post(protectRoute, addOrderItems);
 router.route("/:id").get(protectRoute, getOrderById);
-router.route("/:id/pay").get(protectRoute, updateOrderToPaid);
+router.route("/:id/pay").put(protectRoute, updateOrderToPaid);
 
 module.exports = router;
