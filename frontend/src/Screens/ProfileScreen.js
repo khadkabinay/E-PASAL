@@ -22,8 +22,8 @@ const ProfileScreen = ({ location, history }) => {
   const updatedInfo = useSelector((state) => state.updateProfile);
   const { success } = updatedInfo;
 
-  const orderMyList = useSelector((state) => state.orderMyList);
-  const { loading: loadingOrders, error: errorOrders, orders } = orderMyList;
+  // const orderMyList = useSelector((state) => state.orderMyList);
+  // const { loading: loadingOrders, error: errorOrders, orders } = orderMyList;
 
   useEffect(() => {
     if (!userInfo) {
