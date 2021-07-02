@@ -49,7 +49,7 @@ const getOrderById = asyncHandler(async (req, res) => {
   }
 });
 
-//@desc Update order to paid
+//@desc Update order if it is paid
 const updateOrderToPaid = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
 
