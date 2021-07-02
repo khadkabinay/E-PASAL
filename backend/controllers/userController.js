@@ -91,7 +91,6 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 });
 
 //@desc Get all users
-
 const getUsers = asyncHandler(async (req, res) => {
   const users = await User.find({});
   res.json(users);
