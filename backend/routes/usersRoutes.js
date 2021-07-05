@@ -9,9 +9,9 @@ const {
   updateUserProfile,
   getUsers,
 } = require("../controllers/userController");
-const { protectRoute } = require("../middleware/authMiddleware");
+const { protectRoute, admin } = require("../middleware/authMiddleware");
 
-router.route("/").post(registerUser).get(protectRoute, getUsers);
+router.route("/").post(registerUser).get(protectRoute, admin, getUsers);
 router.post("/login", authUser);
 router
   .route("/profile")
