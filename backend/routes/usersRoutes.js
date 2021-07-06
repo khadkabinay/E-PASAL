@@ -18,4 +18,5 @@ router
   .get(protectRoute, getUserProfile)
   .put(protectRoute, updateUserProfile);
 
+
 module.exports = router;
