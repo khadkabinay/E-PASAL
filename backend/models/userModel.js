@@ -32,7 +32,7 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-//saves a password after hashing
+// saves a password after hashing
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
