@@ -27,13 +27,13 @@ const userSchema = mongoose.Schema(
   }
 );
 
-// Instantiates a method to compare old and new password
+//Instantiates a method to compare old and new password
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
 
-// Saves password after hashed
+//Saves password after hashed
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
