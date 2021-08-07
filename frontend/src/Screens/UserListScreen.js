@@ -8,9 +8,13 @@ import Message from "../Components/Message";
 
 const UserListScreen = () => {
   const dispatch = useDispatch();
+
   const userList = useSelector((state) => state.userList);
-  console.log(userList);
   const { loading, error, users } = userList;
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  console.log(userInfo);
 
   useEffect(() => {
     dispatch(listUsers());
