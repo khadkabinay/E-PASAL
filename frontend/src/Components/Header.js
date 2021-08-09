@@ -21,7 +21,7 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <Link className="mr-4" to="/cart">
+              <Link className="mr-5" to="/cart">
                 Cart
               </Link>
               {userInfo ? (
