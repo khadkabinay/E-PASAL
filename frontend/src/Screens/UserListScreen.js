@@ -13,6 +13,7 @@ const UserListScreen = ({ history }) => {
   const { loading, error, users } = userList;
 
   const userLogin = useSelector((state) => state.userLogin);
+  console.log(userLogin);
   const { userInfo } = userLogin;
 
   useEffect(() => {
