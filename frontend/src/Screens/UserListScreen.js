@@ -27,7 +27,9 @@ const UserListScreen = ({ history }) => {
   }, [dispatch, history, userInfo, successDelete]);
 
   const deleteHandler = (id) => {
-    dispatch(deleteUser(id));
+    if (window.confirm("Are you sure ?")) {
+      dispatch(deleteUser(id));
+    }
   };
   return (
     <>
@@ -70,7 +72,7 @@ const UserListScreen = ({ history }) => {
                   </LinkContainer>
                   <Button
                     variant="danger"
-                    classNameq="btn-sm"
+                    className="btn-sm"
                     onClick={() => deleteHandler(user._id)}
                   >
                     <i className="fas fa-trash"></i>
