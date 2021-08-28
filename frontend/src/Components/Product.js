@@ -6,7 +6,7 @@ import Rating from "./Rating";
 const Product = (props) => {
   return (
     <>
-      <Card className="my-4 p-3">
+      <Card className="my-4 p-4">
         <Link to={`/product/${props.product._id}`}>
           <Card.Img varient="top" src={props.product.image} />
         </Link>
@@ -19,7 +19,7 @@ const Product = (props) => {
             text={`${props.product.numReviews} reviews`}
           />
         </Card.Text>
-        <Card.Text as="h5"> $ {props.product.price}</Card.Text>
+        <Card.Text as="h4"> $ {props.product.price}</Card.Text>
       </Card>
     </>
   );
