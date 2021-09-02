@@ -58,7 +58,7 @@ const UserEditScreen = ({ match, history }) => {
             <Form.Group controlId="isadmin">
               <Form.Check
                 type="checkbox"
-                placeholder="Is Admin"
+                placeholder="Is admin"
                 checked={isAdmin}
                 onChange={(e) => setIsAdmin(e.target.checked)}
               />
