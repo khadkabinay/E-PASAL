@@ -30,7 +30,7 @@ const UserEditScreen = ({ match, history }) => {
         Go Back
       </Link>
       <FormContainer>
-        <h1>Edit User</h1>
+        <h1>Edit a user</h1>
         {loading ? (
           <Loader />
         ) : error ? (
