@@ -5,13 +5,14 @@ node_modules
 node_modules/
 /.pnp
 .pnp.js
+/data
 
 # testing
 /coverage
 
 # production
 /build
-/backend/data/user.js
+
 
 # misc
 .DS_Store
