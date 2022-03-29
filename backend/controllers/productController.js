@@ -34,7 +34,7 @@ const createProduct = asyncHandler(async (req, res) => {
     name: "Sample name",
     price: 0,
     user: req.user._id,
-    image: "/image/sample.jpg",
+    image: "/image/sample.png",
     brand: "Sample brand",
     category: "Sample category",
     countInStock: 0,
@@ -68,4 +68,10 @@ const updateProduct = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { getProducts, getProductById, deleteProduct };
+module.exports = {
+  getProducts,
+  getProductById,
+  deleteProduct,
+  createProduct,
+  updateProduct,
+};
