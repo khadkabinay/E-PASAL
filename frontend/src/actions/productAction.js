@@ -100,7 +100,7 @@ export const createProduct = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`/api/products`, config);
+    const { data } = await axios.post(`/api/products`, {}, config);
 
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
@@ -108,7 +108,7 @@ export const createProduct = () => async (dispatch, getState) => {
     });
   } catch (error) {
     dispatch({
-      type: PRODUCT_DELETE_FAIL,
+      type: PRODUCT_CREATE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
