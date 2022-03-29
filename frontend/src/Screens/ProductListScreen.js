@@ -2,9 +2,14 @@ import React, { useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { listProducts, deleteProduct } from "../actions/productAction";
+import {
+  listProducts,
+  deleteProduct,
+  createProduct,
+} from "../actions/productAction";
 import Loader from "../Components/Loader";
 import Message from "../Components/Message";
+import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
 
 const ProductListScreen = ({ history, match }) => {
   const dispatch = useDispatch();
