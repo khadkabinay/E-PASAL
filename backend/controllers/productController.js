@@ -38,7 +38,6 @@ const createProduct = asyncHandler(async (req, res) => {
     brand: "Sample brand",
     category: "Sample category",
     countInStock: 0,
-    numReviews: 0,
     description: "Sample description",
   });
 
@@ -48,16 +47,8 @@ const createProduct = asyncHandler(async (req, res) => {
 
 //@desc Update a product
 const updateProduct = asyncHandler(async (req, res) => {
-  const {
-    name,
-    price,
-    description,
-    brand,
-    image,
-    category,
-    numReviews,
-    countInStock,
-  } = req.body;
+  const { name, price, description, brand, image, category, countInStock } =
+    req.body;
   const product = await Product.findById(req.params.id);
   if (product) {
     product.name = name;
@@ -65,7 +56,6 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.description = description;
     product.image = image;
     product.brand = brand;
-    product.numReviews = numReviews;
     product.category = category;
     product.countInStock = countInStock;
 
