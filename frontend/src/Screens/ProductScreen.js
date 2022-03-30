@@ -36,6 +36,7 @@ const ProductScreen = ({ history, match }) => {
       ) : (
         <Container className="pt-3">
           <Image src={product.image} />
+          {/* <image src={`${window.location.origin}/${product.image}`} /> */}
           <Col>
             <Button>
               <Link to="/">Go Back</Link>
