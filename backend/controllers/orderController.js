@@ -70,6 +70,21 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     throw new Error("Order not found");
   }
 });
+//@desc Update order if delivered
+const updateOrderToDelivered = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
+
+  if (order) {
+    order.isDelivered = true;
+    order.deliveredAt = Date.now();
+
+    const updatedOrderDeliver = await order.save();
+    res.json(updatedOrderDeliver);
+  } else {
+    res.status(404);
+    throw new Error("Order not found");
+  }
+});
 
 //@desc  Get logged in user orders
 const getMyOrders = asyncHandler(async (req, res) => {
@@ -89,4 +104,5 @@ module.exports = {
   updateOrderToPaid,
   getMyOrders,
   getOrders,
+  updateOrderToDelivered,
 };
