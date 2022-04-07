@@ -8,10 +8,12 @@ const {
   deleteProduct,
   createProduct,
   updateProduct,
+  createProductReview,
 } = require("../controllers/productController");
 const { protectRoute, admin } = require("../middleware/authMiddleware");
 
 router.route("/").get(getProducts).post(protectRoute, admin, createProduct);
+router.route("/:id/reviews").post(protectRoute, createProductReview);
 router
   .route("/:id")
   .get(getProductById)
