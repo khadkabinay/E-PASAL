@@ -179,7 +179,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/orders/myOrders`, config);
+    const { data } = await axios.get(`/api/orders/myorders`, config);
 
     dispatch({
       type: ORDER_MY_LIST_SUCCESS,

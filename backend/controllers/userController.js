@@ -52,7 +52,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
 //@desc User profile
 const getUserProfile = asyncHandler(async (req, res) => {
-  user = await User.findById(req.user._id);
+  const user = await User.findById(req.user._id);
   if (user) {
     res.json({
       _id: user._id,
@@ -68,7 +68,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
 
 //@desc Update User profile
 const updateUserProfile = asyncHandler(async (req, res) => {
-  user = await User.findById(req.user._id);
+  const user = await User.findById(req.user._id);
   if (user) {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
