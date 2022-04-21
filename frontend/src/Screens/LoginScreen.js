@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../actions/userAction";
+import { login } from "../actions/userActions";
 import FormContainer from "../Components/FormContainer";
 
 const LoginScreen = ({ location, history }) => {
@@ -11,7 +11,7 @@ const LoginScreen = ({ location, history }) => {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
+  const { userInfo } = userLogin;
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
   useEffect(() => {

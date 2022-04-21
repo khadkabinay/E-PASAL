@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
-import { logOut } from "../actions/userAction";
+import { logOut } from "../actions/userActions";
 
 const Header = ({ history }) => {
   const dispatch = useDispatch();

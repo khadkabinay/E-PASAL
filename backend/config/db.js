@@ -1,6 +1,9 @@
 // MODELS AND DATABASE CONNECTION
 
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
+
 const connectionURL =
   process.env.MONGODB_URI || "mongodb://localhost:27017/epasal";
 

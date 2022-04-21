@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { listUsers, deleteUser } from "../actions/userAction";
+import { listUsers, deleteUser } from "../actions/userActions";
 import Loader from "../Components/Loader";
 import Message from "../Components/Message";
 

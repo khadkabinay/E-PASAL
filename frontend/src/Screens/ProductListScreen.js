@@ -6,7 +6,7 @@ import {
   listProducts,
   deleteProduct,
   createProduct,
-} from "../actions/productAction";
+} from "../actions/productActions";
 import Loader from "../Components/Loader";
 import Message from "../Components/Message";
 import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
@@ -46,7 +46,14 @@ const ProductListScreen = ({ history, match }) => {
     } else {
       dispatch(listProducts());
     }
-  }, [dispatch, history, userInfo, successDelete, successCreate]);
+  }, [
+    dispatch,
+    history,
+    userInfo,
+    successDelete,
+    successCreate,
+    createdProduct._id,
+  ]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure ?")) {

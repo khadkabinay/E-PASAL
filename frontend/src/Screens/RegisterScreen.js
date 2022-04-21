@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { register } from "../actions/userAction";
+import { register } from "../actions/userActions";
 import FormContainer from "../Components/FormContainer";
 
 const RegisterScreen = ({ location, history }) => {
@@ -14,7 +14,7 @@ const RegisterScreen = ({ location, history }) => {
   const dispatch = useDispatch();
 
   const userRegister = useSelector((state) => state.userRegister);
-  const { loading, error, userInfo } = userRegister;
+  const { userInfo } = userRegister;
 
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
