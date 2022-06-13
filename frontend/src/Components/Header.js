@@ -1,9 +1,11 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { logOut } from "../actions/userActions";
+import SearchBox from "./SearchBox";
 
 const Header = ({ history }) => {
   const dispatch = useDispatch();
@@ -20,6 +22,7 @@ const Header = ({ history }) => {
           <Navbar.Brand href="/">E-Pasal</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
+            <Route render={({ history }) => <SearchBox history={history} />} />
             <Nav className="ml-auto">
               <Link className="mr-5" to="/cart">
                 Cart
