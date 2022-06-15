@@ -19,7 +19,7 @@ const Header = ({ history }) => {
     <header>
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="/">E-Pasal</Navbar.Brand>
+          <Navbar.Brand href="/">EPASAL</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Route render={({ history }) => <SearchBox history={history} />} />
