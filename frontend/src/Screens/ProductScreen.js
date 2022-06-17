@@ -7,6 +7,7 @@ import {
 import Rating from "../Components/Rating";
 import { Link } from "react-router-dom";
 import Message from "../Components/Message";
+import Meta from "../Components/Meta";
 import {
   Image,
   Col,
@@ -62,50 +63,54 @@ const ProductScreen = ({ history, match }) => {
       {loading ? (
         <h1>loading</h1>
       ) : (
-        <Card className="pt-3" variant="flush">
-          <Col md={4}>
-            <Image src={product.image} fluid />
-          </Col>
-          <Col md={6}>
-            <Row>Name : {product.name}</Row>
-            <Row>Description: {product.description}</Row>
-            <Row>Price: {product.price}</Row>
-            <Rating
-              value={product.rating}
-              text={`${product.numReviews} reveiews`}
-            />
-            <ListGroup>
-              <ListGroupItem> price: {product.price}</ListGroupItem>
-              <ListGroupItem>
-                Status:{" "}
-                {product.countInStock === 0 ? "Out Of Stock" : "In Stock"}
-              </ListGroupItem>
-              {product.countInStock > 0 && (
+        <>
+          <Meta title={product.name} />
+          <Card className="pt-3" variant="flush">
+            <Col md={4}>
+              <Image src={product.image} fluid />
+            </Col>
+            <Col md={6}>
+              <Row>Name : {product.name}</Row>
+              <Row>Description: {product.description}</Row>
+              <Row>Price: {product.price}</Row>
+              <Rating
+                value={product.rating}
+                text={`${product.numReviews} reveiews`}
+              />
+              <ListGroup>
+                <ListGroupItem> price: {product.price}</ListGroupItem>
                 <ListGroupItem>
-                  Qty:
-                  <Form.Control
-                    as="select"
-                    value={qty}
-                    onChange={(e) => setQty(e.target.value)}
-                  >
-                    {[...Array(product.countInStock).keys()].map((x) => (
-                      <option key={x + 1} value={x + 1}>
-                        {x + 1}
-                      </option>
-                    ))}
-                  </Form.Control>
+                  Status:{" "}
+                  {product.countInStock === 0 ? "Out Of Stock" : "In Stock"}
                 </ListGroupItem>
-              )}
-              <Button
-                onClick={addToCartHandler}
-                disabled={product.countInStock === 0}
-              >
-                Add To Cart
-              </Button>
-            </ListGroup>
-          </Col>
-        </Card>
+                {product.countInStock > 0 && (
+                  <ListGroupItem>
+                    Qty:
+                    <Form.Control
+                      as="select"
+                      value={qty}
+                      onChange={(e) => setQty(e.target.value)}
+                    >
+                      {[...Array(product.countInStock).keys()].map((x) => (
+                        <option key={x + 1} value={x + 1}>
+                          {x + 1}
+                        </option>
+                      ))}
+                    </Form.Control>
+                  </ListGroupItem>
+                )}
+                <Button
+                  onClick={addToCartHandler}
+                  disabled={product.countInStock === 0}
+                >
+                  Add To Cart
+                </Button>
+              </ListGroup>
+            </Col>
+          </Card>
+        </>
       )}
+
       <Col md={6}>
         <h2>Reviews</h2>
         {product.reviews.length === 0 && <Message>No Reviews</Message>}
@@ -118,11 +123,13 @@ const ProductScreen = ({ history, match }) => {
               <p>{review.comment}</p>
             </ListGroup.Item>
           ))}
+
           <ListGroup.Item>
             <h2>Write a Customer Review</h2>
             {errorProductReview && (
               <Message variant="danger">{errorProductReview}</Message>
             )}
+
             {userInfo ? (
               <Form onSubmit={submitHandler}>
                 <Form.Group controlId="rating">
