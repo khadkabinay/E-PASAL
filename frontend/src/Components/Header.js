@@ -1,7 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { logOut } from "../actions/userActions";
@@ -17,16 +16,24 @@ const Header = ({ history }) => {
   };
   return (
     <header>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="light" expand="lg" collapseOnSelect>
         <Container>
-          <Navbar.Brand href="/">EPASAL</Navbar.Brand>
+          <LinkContainer to="/">
+            <Navbar.Brand>EPASAL</Navbar.Brand>
+          </LinkContainer>
+
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse
+            id="basic-navbar-nav"
+            className="d-flex justify-content-between"
+          >
             <Route render={({ history }) => <SearchBox history={history} />} />
-            <Nav className="ml-auto">
-              <Link className="mr-5" to="/cart">
-                Cart
-              </Link>
+            <Nav>
+              <LinkContainer to="/cart">
+                <Nav.Link>
+                  <i className="fas fa-shopping-cart"></i> Cart
+                </Nav.Link>
+              </LinkContainer>
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">
                   <LinkContainer to="/profile">
@@ -37,7 +44,11 @@ const Header = ({ history }) => {
                   </NavDropdown.Item>
                 </NavDropdown>
               ) : (
-                <Link to="/login">Sign In</Link>
+                <LinkContainer to="/login">
+                  <Nav.Link>
+                    <i className="fas fa-user"></i> Sign In
+                  </Nav.Link>
+                </LinkContainer>
               )}
               {userInfo && userInfo.isAdmin && (
                 <NavDropdown title="Admin" id="adminmenu">
